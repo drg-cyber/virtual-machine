@@ -37,16 +37,19 @@
 //==============================================================
 
 #include <iostream>
+#include <string>
 #include "Runner.h"
 #include "MyException.h"
 
-int main()
+int main(int argc, char* argv[])
 {
     Runner runner;
 
+    std::string filename = (argc > 1) ? argv[1] : "program.asm";
+
     try
     {
-        runner.loadProgram("program.asm");
+        runner.loadProgram(filename);
         runner.decodeAll();
         runner.runAllTraced();
         runner.dump("output.txt");
